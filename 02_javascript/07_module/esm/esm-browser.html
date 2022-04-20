@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>esm-browser</title>
+</head>
+<body>
+    <ul id="list"></ul>
+    <script type="module">
+        import uniq from 'https://dev.jspm.io/lodash-es/uniq.js';
+
+        const arr = [12, 2, 2, 2, 9, 5, 12, 11, 15, 8, 9, 8];
+        const elems = uniq(arr)
+            .sort((n, m) => n < m ? -1 : 1)
+            .map(n => `<li>${n}</li>`)
+            .join('');
+        document.getElementById('list').innerHTML = elems;
+    </script>
+</body>
+</html>
