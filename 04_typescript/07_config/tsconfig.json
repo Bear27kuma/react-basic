@@ -1,0 +1,53 @@
+{
+  "compilerOptions": {
+    // コンパイル先のJavaScriptのバージョンを指定する
+    // ESNextはコンパイルに使われるバージョンのTypeScriptがサポートしているECMAScriptの最も新しいバージョンを指す
+    "target": "ES6",
+    // コンパイルに含めるライブラリを指定する
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    // コンパイル後のモジュール構文をどのモジュールシステム形式にするか設定する
+    // 動作環境がNode.jsの場合、commonjsを指定する
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    // ファイルを出力しないようにするオプション
+    // 現行のCRAプロジェクト設定ではtscは構文チェックのみで、次際のTypeScriptコンパイルはBabelが行なっているため
+    "noEmit": true,
+    // JSX構文をそのままにするか、Reactの構文に書き換えるかを指定する
+    // react-jsxはReact17.0以降の新しいJSX変換形式に対応するもの
+    "jsx": "react-jsx",
+    // モジュールのインポートのパス指定に絶対パスを使えるようにし、起点となるディレクトリを指定する
+    "baseUrl": "src",
+    // コンパイルターゲットがES5以前に設定されている場合でも、ES2015から導入された各種イテレータ周りの便利な記述をES5以下でも実行できるように書き下ろしてくれるオプション
+    "downlevelIteration": true
+  },
+  // コンパイル対象となるファイルを指定するための設定
+  "include": [
+    // src/ディレクトリ以下のTypeScriptをコンパイル対象にする
+    "src"
+  ]
+  // includeの反対で、コンパイル対象から除外するファイルを指定するオプションもある
+}
+
+/*
+strictオプションをtrueにすると、以下のオプションがまとめて有効になる
+・noImplicitAny - 暗黙的にanyが指定されている式や宣言があればエラーになる
+・noImplicitThis - thisが暗黙的にanyを表現していればエラーになる
+・alwaysStrict - すべてのソースファイルの先頭に 'use strict' が記述されているものとみなし、ECMAScriptのstrictモードでパースする
+・strictBindCallApply - bind()、call()、apply()メソッド使用時に、その関数に渡される引数の型チェックを行う
+・strictNullChecks - 他のすべての型から null および undefined が代入不可になる
+・strictFunctionTypes - 関数の引数の型チェックが「共変的（Bivariant）」ではなく、「反変的（Contravariant）」に行われるようになる
+・strictPropertyInitialization - 宣言だけで初期化されないクラスプロパティ（= メンバー変数）があるとエラーになる（※ strictNullChecksも併せて有効にしておく必要あり）
+*/
